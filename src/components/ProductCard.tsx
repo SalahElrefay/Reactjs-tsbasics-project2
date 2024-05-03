@@ -28,12 +28,14 @@ product: IProduct;
 
             <div className="flex items-center justify-between" >
                 <span className="text-blue-800 font-bold " >
-                ${price}
+                    ${price}
                 </span>
                 <div className="flex items-center space-x-2" >
-                <Image imageUrl={category.imageURL } alt={category.name} className="w-10 h-10 rounded-full object-bottom" />
+                    <Image imageUrl={category.imageURL } alt={category.name} className="w-10 h-10 rounded-full object-bottom" />
 
-                    <span>{product.category.name}</span>
+                    <span>
+                        {product.category.name}
+                    </span>
                 </div>
             </div>
 
