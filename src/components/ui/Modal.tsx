@@ -5,10 +5,11 @@ interface IProps{
     isOpen: boolean;
     closeModal: ()=> void;
     title?:string;
+    description?: string;
     children:ReactNode;
 }
 
-const Modal =({isOpen , closeModal , title , children }:IProps) => {
+const Modal =({isOpen , closeModal , title , description , children }:IProps) => {
  
   return (
     <>
@@ -16,6 +17,7 @@ const Modal =({isOpen , closeModal , title , children }:IProps) => {
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <div className="fixed inset-0 backdrop-blur-sm" aria-hidden="true"/>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -25,7 +27,7 @@ const Modal =({isOpen , closeModal , title , children }:IProps) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 bg-black bg-opacity-25 " />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -42,12 +44,14 @@ const Modal =({isOpen , closeModal , title , children }:IProps) => {
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all">
 
 
-                  {title && <Dialog.Title
+                  {title && (<Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    {title}
-                  </Dialog.Title>}
+                      {title}
+                    </Dialog.Title>
+                  )}
+                  {description && <p className="text-sm text-gray-500 mt-3">{description}</p>}
                   
 
                   <div className="mt-4">
